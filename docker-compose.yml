@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - DB_HOST=mysql_db
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=task_management
+    depends_on:
+      - mysql_db
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+
+  mysql_db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=task_management
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

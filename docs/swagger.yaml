@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Task Manager API
+  description: API para Gestão de Tarefas com OAuth 2.0
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /projects:
+    get:
+      summary: Listar Projetos
+      responses:
+        '200':
+          description: Sucesso
+    post:
+      summary: Criar Projeto
+      responses:
+        '201':
+          description: Criado
+  /projects/{id}:
+    put:
+      summary: Atualizar Projeto
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Atualizado
+    delete:
+      summary: Apagar Projeto
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Apagado
+  /tasks:
+    get:
+      summary: Listar Tarefas
+      responses:
+        '200':
+          description: Sucesso
+    post:
+      summary: Criar Tarefa
+      responses:
+        '201':
+          description: Criada
+  /tasks/{id}:
+    put:
+      summary: Atualizar Tarefa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Atualizada
+    delete:
+      summary: Apagar Tarefa
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Apagada
+  /users:
+    get:
+      summary: Listar Users
+      responses:
+        '200':
+          description: Sucesso
